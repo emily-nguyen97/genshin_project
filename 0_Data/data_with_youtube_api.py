@@ -209,3 +209,7 @@ def main():
     youtube = connect_API()
     for i in range(len(genshin_characters)):
         outer_loop(youtube, filename, genshin_characters[i])
+
+
+if __name__ == '__main__':
+    main()
