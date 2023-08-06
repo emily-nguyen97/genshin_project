@@ -21,12 +21,30 @@ def clean(df):
 @task()
 def write_local(df, dataset_file):
     '''Write DataFrame locally as a parquet file'''
-    path = Path(f"0_Data/{dataset_file}.parquet")
+    path = Path(f'0_Data/{dataset_file}.parquet')
     df.to_parquet(path, compression='gzip')
     return path
 
 @task()
-def write_gc(path):
-    gcs_block = GcsBucket.load('')
+def write_gcs(path):
+    gcs_block = GcsBucket.load('genshin-gcs')
+    gcs_block.upload_from_path(from_path=path, to_path=path)
+    return
 
-    url = 'https://genshin-impact.fandom.com/wiki/Character/List'
+@flow()
+def etl_web_to_gcs():
+    '''Main ETL function'''
+    dataset_file = f'char_data'
+    dataset_url = f'https://genshin-impact.fandom.com/wiki/Character/List'
+
+    df = fetch(dataset_url)
+    df_clean = clean(df)
+    path = write_local(df_clean, dataset_file)
+    write_gcs(path)
+
+    # Also send Youtube data to gcs
+    youtube_path = f'genshin_data_V3_7.csv'
+    write_gcs(youtube_path)
+
+if __name__ == '__main__':
+    etl_web_to_gcs()
