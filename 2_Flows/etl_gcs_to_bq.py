@@ -49,7 +49,7 @@ def etl_gcs_to_bq():
     path, youtube_path = extract_from_gcs()
 
     df = transform(path)
-    df_youtube = read_csv(youtube_path)
+    df_youtube = pd.read_csv(youtube_path)
 
     write_bq(df, 'genshin.chars')
     write_bq(df_youtube, 'genshin.playstyles')
