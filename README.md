@@ -6,17 +6,5 @@
 
 # Docker
 
-This is how I set it up for WSL. First, I followed the instructions here: https://docs.docker.com/engine/install/ubuntu/.
+This is how I set it up for WSL. First, I followed the instructions here: https://docs.docker.com/engine/install/ubuntu/ and https://docs.docker.com/desktop/wsl/. 
 
-Then I got the error: 
-```shell
-docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
-See 'docker run --help'.
-```
-
-To fix this, I ran
-```shell
-sudo apt-get install -y iptables arptables ebtables
-sudo dockerd --iptables=false
-```
-Otherwise, I would need to fix things related to using WSL
