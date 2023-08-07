@@ -16,3 +16,19 @@ sudo mv terraform /usr/local/bin/
 chmod +x terraform
 export PATH=$PATH:~/terraform
 ```
+
+# How to execute
+
+```shell
+# Refresh service-account's auth-token
+gcloud auth application-default login
+
+terraform init
+terraform plan -var="project=<gcp-project-id>"
+terraform apply -var="project=<gcp-project-id>"
+```
+
+```shell
+# Delete infra to avoid costs on any running services
+terraform destroy
+```
