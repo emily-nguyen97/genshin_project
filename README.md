@@ -19,3 +19,4 @@ To fix this, I ran
 sudo apt-get install -y iptables arptables ebtables
 sudo dockerd --iptables=false
 ```
+Otherwise, I would need to fix things related to using WSL
