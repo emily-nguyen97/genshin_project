@@ -5,4 +5,9 @@
 prefect orion start
 ```
 
-Go to the UI with the link provided by the command that was just ran and then go to Blocks to add the necessary blocks.
+Go to the UI with the link provided by the command that was just ran. Before adding blocks, run
+```shell
+prefect block register -m prefect_gcp
+```
+
+And then go to the API to add blocks
