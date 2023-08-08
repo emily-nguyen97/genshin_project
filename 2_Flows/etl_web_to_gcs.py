@@ -6,7 +6,7 @@ from prefect_gcp.cloud_storage import GcsBucket
 @task(retries=3)
 def fetch(dataset_url):
     '''Read data from web into pandas DataFrame'''
-    df = pd.DataFrame(pd.read_html(url)[0])
+    df = pd.DataFrame(pd.read_html(dataset_url)[0])
     return df
 
 @task(log_prints=True)
