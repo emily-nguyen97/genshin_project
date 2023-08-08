@@ -43,7 +43,7 @@ def etl_web_to_gcs():
     write_gcs(path)
 
     # Also send Youtube data to gcs
-    youtube_path = f'genshin_data_V3_7.csv'
+    youtube_path = f'0_Data/genshin_data_V3_7.csv'
     write_gcs(youtube_path)
 
 if __name__ == '__main__':
