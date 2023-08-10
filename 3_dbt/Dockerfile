@@ -15,11 +15,7 @@ FROM --platform=$build_for python:3.11.2-slim-bullseye as base
 # N.B. dbt-postgres is currently found in the core codebase so a value of dbt-core@<some_version> is correct
 
 ARG dbt_core_ref=dbt-core@v1.7.0a1
-ARG dbt_postgres_ref=dbt-core@v1.7.0a1
-ARG dbt_redshift_ref=dbt-redshift@v1.7.0a1
 ARG dbt_bigquery_ref=dbt-bigquery@v1.7.0a1
-ARG dbt_snowflake_ref=dbt-snowflake@v1.7.0a1
-ARG dbt_spark_ref=dbt-spark@v1.7.0a1
 # special case args
 ARG dbt_spark_version=all
 ARG dbt_third_party
@@ -89,8 +85,4 @@ RUN apt-get update \
     /var/lib/apt/lists/* \
     /tmp/* \
     /var/tmp/*
-  RUN python -m pip install --no-cache "git+https://github.com/dbt-labs/${dbt_redshift_ref}#egg=dbt-redshift"
   RUN python -m pip install --no-cache "git+https://github.com/dbt-labs/${dbt_bigquery_ref}#egg=dbt-bigquery"
-  RUN python -m pip install --no-cache "git+https://github.com/dbt-labs/${dbt_snowflake_ref}#egg=dbt-snowflake"
-  RUN python -m pip install --no-cache "git+https://github.com/dbt-labs/${dbt_spark_ref}#egg=dbt-spark[${dbt_spark_version}]"
-  RUN python -m pip install --no-cache "git+https://github.com/dbt-labs/${dbt_postgres_ref}#egg=dbt-postgres&subdirectory=plugins/postgres"
