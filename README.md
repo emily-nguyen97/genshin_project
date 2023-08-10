@@ -8,3 +8,6 @@
 
 This is how I set it up for WSL. First, I followed the instructions here: https://docs.docker.com/engine/install/ubuntu/ and https://docs.docker.com/desktop/wsl/. 
 
+
+1.) Start up Terraform to set up the BigQuery dataset and GCS
+2.) Start up Prefect to get the data, store it in GCS, and then move it to BigQuery
