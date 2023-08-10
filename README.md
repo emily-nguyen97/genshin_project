@@ -14,3 +14,4 @@ conda activate genshin_env
 ```
 1.) Start up Terraform to set up the BigQuery dataset and GCS
 2.) Start up Prefect to get the data, store it in GCS, and then move it to BigQuery
+3.) Start up dbt Cloud
