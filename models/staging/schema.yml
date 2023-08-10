@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: dtc-de-course-381518
+    schema: genshin
+
+    tables:
+      - name: playstyles
+      - name: chars
